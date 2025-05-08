@@ -34,5 +34,8 @@
 	},
 	"forwardPorts": [],
 	"postCreateCommand": "pip install --upgrade pip && pip install -r requirements.txt",
-	"remoteUser": "vscode"
+	"remoteUser": "vscode",
+	"containerEnv": {
+		"UV_PROJECT_ENVIRONMENT": "/home/vscode/.venv"
+	},
 }

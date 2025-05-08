@@ -9,13 +9,15 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     wget \
     vim
 
-# Python関連ツールのインストール
-RUN pip install --upgrade pip \
-    && pip install pylint autopep8 black flake8 mypy
-
 # 作業ディレクトリの設定
 WORKDIR /workspace
 
 # ユーザー権限の設定
 RUN chown -R vscode:vscode /workspace
 USER vscode
+
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+ENV PATH="/home/vscode/.local/bin:${PATH}"
+
+WORKDIR /home/vscode
+RUN uv venv
